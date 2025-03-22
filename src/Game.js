@@ -22,6 +22,7 @@ class Game {
     this.view = new View(this);
     this.userName = name;
     this.score = 0;
+    this.startTime = new Date();
     this.track = [];
     this.regenerateTrack();
   }
@@ -72,7 +73,11 @@ class Game {
 
   handleCollisions() {
     if (this.hero.position === this.enemy.position) {
-      addScoreToUser(this.userId, this.score).then(() => this.hero.die());
+      addScoreToUser(
+        this.userId,
+        this.score,
+        new Date() - this.startTime - 2000
+      ).then(() => this.hero.die());
     }
 
     if (this.boomerang.position === this.enemy.position) {

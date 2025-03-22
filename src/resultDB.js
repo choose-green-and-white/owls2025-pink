@@ -1,10 +1,11 @@
 const { User, Result } = require('../db/models');
 
-async function addScoreToUser(userId, score) {
+async function addScoreToUser(userId, score, time) {
   try {
     const { dataValues } = await Result.create({
       score,
       userId,
+      time,
     });
 
     const userName = await User.findByPk(dataValues.userId);
