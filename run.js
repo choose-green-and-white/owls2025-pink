@@ -1,4 +1,4 @@
-//const addScoreToUser = require('./src/resultDB')
+const addScoreToUser = require('./src/resultDB')
 // Основной файл.
 // Запускает игру.
 const Game = require('./src/Game');
@@ -10,7 +10,7 @@ const game = new Game({
   trackLength: 30,
 });
 
-// Запуск игры.
+//Запуск игры.
 registrationUser()
   .then((res) => {
     console.log(`${res} приготовься ,скоро на тебя побегут опасные смайлики!`);
