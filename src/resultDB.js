@@ -2,14 +2,16 @@ const { User, Result } = require('../db/models');
 
 async function addScoreToUser(userId, score) {
   try {
-
-    const {dataValues} = await Result.create({
+    const { dataValues } = await Result.create({
       score,
-      userId
+      userId,
     });
-    
-    const userName = await User.findByPk(dataValues.userId)    
-    console.log(`Очки успешно добавлены игроку ${userName.toJSON().name}:`, dataValues.score);
+
+    const userName = await User.findByPk(dataValues.userId);
+    console.log(
+      `Очки успешно добавлены игроку "${userName.toJSON().name}" счет:`,
+      dataValues.score
+    );
   } catch (error) {
     console.error('Ошибка при добавлении очков:', error);
     throw error;
@@ -17,4 +19,3 @@ async function addScoreToUser(userId, score) {
 }
 
 module.exports = addScoreToUser;
-

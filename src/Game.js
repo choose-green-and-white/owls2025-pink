@@ -7,17 +7,21 @@ const Enemy = require('./game-models/Enemy');
 // const Boomerang = require('./game-models/Boomerang');
 const View = require('./View');
 const Boomerang = require('./game-models/Boomerang');
-
+const addScoreToUser = require('./resultDB');
+const { getUserIdByName } = require('./userDb');
 // Основной класс игры.
 // Тут будут все настройки, проверки, запуск.
 
 class Game {
-  constructor({ trackLength }) {
+  userId = null;
+  constructor({ trackLength }, name) {
     this.trackLength = trackLength;
     this.boomerang = new Boomerang(trackLength);
     this.hero = new Hero({ position: 0, boomerang: this.boomerang });
     this.enemy = new Enemy(trackLength);
     this.view = new View(this);
+    this.userName = name;
+    this.score = 0;
     this.track = [];
     this.regenerateTrack();
   }
@@ -42,6 +46,12 @@ class Game {
     }
   }
 
+  async setUserId() {
+    return await getUserIdByName(this.userName).then(
+      (res) => (this.userId = res)
+    );
+  }
+
   play() {
     setInterval(() => {
       // Let's play!
@@ -62,13 +72,14 @@ class Game {
 
   handleCollisions() {
     if (this.hero.position === this.enemy.position) {
-      this.hero.die();
+      addScoreToUser(this.userId, this.score).then(() => this.hero.die());
     }
 
     if (this.boomerang.position === this.enemy.position) {
       this.enemy.die();
       // Обнуляем позицию бумеранга после столкновения с врагом
       // this.boomerang.position = -1;
+      this.score++;
       this.enemy = new Enemy(this.trackLength); // Создаем нового врага
     }
   }
