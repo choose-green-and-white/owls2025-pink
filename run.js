@@ -12,12 +12,14 @@ const game = new Game({
 });
 
 // Запуск игры.
-registrationUser()
-  .then((res) => {
-    console.log(`${res} приготовься ,скоро на тебя побегут опасные смайлики!`);
-    setTimeout(() => {
-      game.play();
-      runInteractiveConsole(game);
-    }, 4000);
-  })
-  .catch(console.error);
+// registrationUser()
+//   .then((res) => {
+//     console.log(`${res} приготовься ,скоро на тебя побегут опасные смайлики!`);
+//     setTimeout(() => {
+//       game.play();
+//       runInteractiveConsole(game);
+//     }, 4000);
+//   })
+  // .catch(console.error);
+
+createUser('Ivan')
