@@ -30,6 +30,7 @@ function runInteractiveConsole(game) {
     }
   });
   process.stdin.setRawMode(true);
+  // process.stdin.resume();
 }
 
 module.exports = runInteractiveConsole;
