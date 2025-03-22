@@ -12,6 +12,7 @@ function registrationUser() {
         name += ch;
 
         if (key.name === 'enter') {
+          name = name.trim();
           if (!name) {
             rej(name);
           }
