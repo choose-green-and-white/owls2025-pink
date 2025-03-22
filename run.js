@@ -1,3 +1,4 @@
+//const addScoreToUser = require('./src/resultDB')
 // Основной файл.
 // Запускает игру.
 const Game = require('./src/Game');
