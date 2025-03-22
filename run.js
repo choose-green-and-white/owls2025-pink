@@ -2,6 +2,7 @@
 // Запускает игру.
 const Game = require('./src/Game');
 const runInteractiveConsole = require('./src/keyboard');
+const registrationUser = require('./src/registration');
 
 // Инициализация игры с настройками.
 const game = new Game({
@@ -9,6 +10,11 @@ const game = new Game({
 });
 
 // Запуск игры.
-game.play();
+registrationUser().then((res) => {
+  console.log(`Игрок ${res} приготовься, игра скоро начнется!`);
 
-runInteractiveConsole(game);
+  setTimeout(() => {
+    game.play();
+    runInteractiveConsole(game);
+  }, 3000);
+});
