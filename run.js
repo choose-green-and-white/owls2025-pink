@@ -3,6 +3,7 @@
 // Запускает игру.
 const Game = require('./src/Game');
 const runInteractiveConsole = require('./src/keyboard');
+const registrationUser = require('./src/registration');
 
 // Инициализация игры с настройками.
 const game = new Game({
@@ -10,6 +11,13 @@ const game = new Game({
 });
 
 // Запуск игры.
-game.play();
+registrationUser()
+  .then((res) => {
+    console.log(`${res} приготовься ,скоро на тебя побегут опасные смайлики!`);
 
-runInteractiveConsole(game);
+    setTimeout(() => {
+      game.play();
+      runInteractiveConsole(game);
+    }, 4000);
+  })
+  .catch(console.error);
