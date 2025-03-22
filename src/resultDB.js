@@ -9,10 +9,14 @@ async function addScoreToUser(userId, score, time) {
     });
 
     const userName = await User.findByPk(dataValues.userId);
-    console.log(
-      `Очки успешно добавлены игроку "${userName.toJSON().name}" счет:`,
-      dataValues.score
-    );
+    console.log(`Очки успешно добавлены игроку "${userName.toJSON().name}"`);
+    
+    console.log(`Счёт:`, dataValues.score);
+
+    const timer = dataValues.time / 1000
+    const improvetimer = parseFloat(timer.toFixed(1))
+    console.log(`Время на игру:`, improvetimer);
+    
   } catch (error) {
     console.error('Ошибка при добавлении очков:', error);
     throw error;
