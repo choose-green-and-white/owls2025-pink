@@ -9,6 +9,6 @@ const game = new Game({
 });
 
 // Запуск игры.
-// game.play();
+game.play();
 
-// runInteractiveConsole(game);
+runInteractiveConsole(game);
