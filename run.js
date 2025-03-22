@@ -1,3 +1,4 @@
+const addScoreToUser = require('./src/resultDB')
 // Основной файл.
 // Запускает игру.
 const Game = require('./src/Game');
@@ -11,13 +12,12 @@ const game = new Game({
 });
 
 // Запуск игры.
-// registrationUser().then((res) => {
-//   console.log(`Игрок ${res} приготовься, игра скоро начнется!`);
-
-//   setTimeout(() => {
-//     game.play();
-//     runInteractiveConsole(game);
-//   }, 3000);
-// });
-
-createUser(Alex)
+registrationUser()
+  .then((res) => {
+    console.log(`${res} приготовься ,скоро на тебя побегут опасные смайлики!`);
+    setTimeout(() => {
+      game.play();
+      runInteractiveConsole(game);
+    }, 4000);
+  })
+  .catch(console.error);
