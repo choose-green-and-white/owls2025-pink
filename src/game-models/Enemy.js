@@ -13,7 +13,8 @@ class Enemy {
 
   moveLeft() {
     // Идём влево.
-    this.position -= 1;
+    //this.position -= 1;
+    this.position = 5;
   }
 
   die() {

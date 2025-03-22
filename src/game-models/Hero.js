@@ -1,5 +1,5 @@
 // Наш герой.
-
+//🤠
 class Hero {
   constructor({ position, boomerang }) {
     this.skin = '🤠';
