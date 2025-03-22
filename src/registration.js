@@ -1,6 +1,8 @@
 const keypress = require('keypress');
 
-async function registrationUser() {
+function registrationUser() {
+  console.log('ОООООООО, Приветствуем тебя! Скажи нам кто ты, воин?!');
+
   return new Promise((res, rej) => {
     keypress(process.stdin);
     let name = '';
@@ -10,6 +12,9 @@ async function registrationUser() {
         name += ch;
 
         if (key.name === 'enter') {
+          if (!name) {
+            rej(name);
+          }
           res(name);
         }
       }

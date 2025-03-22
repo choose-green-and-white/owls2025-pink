@@ -10,11 +10,13 @@ const game = new Game({
 });
 
 // Запуск игры.
-registrationUser().then((res) => {
-  console.log(`Игрок ${res} приготовься, игра скоро начнется!`);
+registrationUser()
+  .then((res) => {
+    console.log(`${res} приготовься ,скоро на тебя побегут опасные смайлики!`);
 
-  setTimeout(() => {
-    game.play();
-    runInteractiveConsole(game);
-  }, 3000);
-});
+    setTimeout(() => {
+      game.play();
+      runInteractiveConsole(game);
+    }, 4000);
+  })
+  .catch(console.error);
